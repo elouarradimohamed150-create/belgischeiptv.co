@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Belgische IPTV — Next.js
 
-## Getting Started
+Migration of [belgischeiptv.be](https://belgischeiptv.be) from WordPress (Astra + Elementor)
+to a static-generated **Next.js 16 + Tailwind CSS v4** site.
 
-First, run the development server:
+## Stack
+- Next.js App Router, fully static (SSG) — 52 prerendered pages
+- Tailwind v4 (design tokens in `src/app/globals.css`)
+- All content + 728 images exported locally — no runtime dependency on WordPress
+- Dutch (`nl-BE`), dark navy theme (`#011427`) with green/purple accents (Lato + Roboto)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Structure
+```
+content/              posts.json (40 blog posts) + pages.json (WP pages), exported from WP REST API
+public/images/        all media, mirroring the original /wp-content/uploads/ paths
+scripts/export-wp.mjs re-run to re-pull content from the live WP site
+src/app/
+  page.tsx            home (hero, features, pricing, FAQ — rebuilt from Elementor)
+  blog/page.tsx       blog listing
+  [slug]/page.tsx     posts + static pages at their original root URLs (SEO-preserving)
+  sitemap.ts robots.ts
+src/components/        Header, Footer, Pricing, Faq, PostCard, WhatsAppButton, Prose
+src/lib/
+  site.ts             brand config, WhatsApp helper, pricing plans & features
+  content.ts          typed loaders over the JSON
+  home-data.ts        homepage copy (features, steps, FAQ)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Commands
+```bash
+npm run dev      # http://localhost:3000
+npm run build    # static production build
+npm run start    # serve the production build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Re-syncing content from WordPress
+```bash
+node scripts/export-wp.mjs   # refreshes content/*.json and downloads new images
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes / TODO for the owner
+- **Ordering is via WhatsApp** (as on the live site) — links in `src/lib/site.ts` (`whatsappPhone`).
+  There is no real checkout; add Stripe/Mollie later if you want on-site payment.
+- The **contact page** content (from WordPress) contained a leftover WhatsApp link with a
+  different phone number (`212637282613`) and "Slovenia IPTV" text — template residue.
+  Clean it in `content/pages.json` or the WP source.
+- Update `site.url` / analytics before deploying. Deploy target: **Vercel** (zero-config) or any static host.

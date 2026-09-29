@@ -6,9 +6,12 @@ import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import CountUp from "@/components/CountUp";
 import Testimonials from "@/components/Testimonials";
+import ContentShowcase from "@/components/ContentShowcase";
+import PostCard from "@/components/PostCard";
 import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
-import { features, steps, faqs, trust } from "@/lib/home-data";
+import { features, steps, faqs, trust, categories, comparison, apps } from "@/lib/home-data";
+import { allPosts } from "@/lib/content";
 import { waLink } from "@/lib/site";
 import { graph, productSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -55,6 +58,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Content showcase */}
+      <section className="py-16">
+        <Reveal className="container-x mb-10 text-center">
+          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+            55.000+ kanalen · 90.000+ titels
+          </span>
+          <h2 className="mt-3 font-display text-3xl font-black text-white sm:text-4xl">
+            Duizenden <span className="text-flag">films, series &amp; sport</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted">
+            De nieuwste blockbusters, complete series en alle topcompetities — altijd binnen één klik.
+          </p>
+        </Reveal>
+        <Reveal>
+          <ContentShowcase />
+        </Reveal>
+      </section>
+
       {/* Features */}
       <section className="py-16">
         <div className="container-x">
@@ -75,6 +96,31 @@ export default function Home() {
                   </div>
                   <h3 className="font-display text-lg font-bold text-white">{f.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{f.text}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* Channel categories */}
+      <section className="py-16">
+        <div className="container-x">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+              Voor <span className="text-flag">elk wat wils</span>
+            </h2>
+            <p className="mt-3 text-muted">
+              Van live sport tot kinderzenders — ontdek alle categorieën in ons aanbod.
+            </p>
+          </Reveal>
+          <Stagger className="grid grid-cols-2 gap-4 sm:grid-cols-4" gap={0.06}>
+            {categories.map((c) => (
+              <StaggerItem key={c.title}>
+                <div className="card-glow h-full rounded-2xl border border-line bg-ink-800 p-6 text-center hover:border-gold/40">
+                  <div className="text-3xl">{c.icon}</div>
+                  <h3 className="mt-3 font-display font-bold text-white">{c.title}</h3>
+                  <p className="mt-1 text-xs text-muted">{c.text}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -136,6 +182,56 @@ export default function Home() {
         </Reveal>
       </section>
 
+      {/* Comparison */}
+      <section className="py-16">
+        <div className="container-x">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+              IPTV vs. <span className="text-flag">klassieke TV</span>
+            </h2>
+            <p className="mt-3 text-muted">
+              Waarom duizenden Belgen en Nederlanders overstappen op Belgische IPTV.
+            </p>
+          </Reveal>
+          <Reveal className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-line">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-ink-700 text-left">
+                  <th className="p-4 font-display font-bold text-white">Kenmerk</th>
+                  <th className="p-4 font-display font-bold text-gold">Belgische IPTV</th>
+                  <th className="p-4 font-display font-bold text-muted">Kabel / Satelliet</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((r, i) => (
+                  <tr key={r.feature} className={i % 2 ? "bg-ink-800" : "bg-ink-800/40"}>
+                    <td className="p-4 text-cloud/90">{r.feature}</td>
+                    <td className="p-4 font-semibold text-white">
+                      {r.iptv === true ? (
+                        <span className="text-green" style={{ color: "#43da64" }}>✓</span>
+                      ) : r.iptv === false ? (
+                        <span className="text-red">✕</span>
+                      ) : (
+                        r.iptv
+                      )}
+                    </td>
+                    <td className="p-4 text-muted">
+                      {r.cable === true ? (
+                        <span style={{ color: "#43da64" }}>✓</span>
+                      ) : r.cable === false ? (
+                        <span className="text-red">✕</span>
+                      ) : (
+                        r.cable
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Reveal>
+        </div>
+      </section>
+
       {/* How to buy */}
       <section className="py-16">
         <div className="container-x">
@@ -186,6 +282,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Supported apps */}
+      <section className="py-10">
+        <div className="container-x">
+          <Reveal>
+            <div className="rounded-2xl border border-line bg-ink-800 p-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+                Werkt met al je favoriete apps
+              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
+                {apps.map((a) => (
+                  <span
+                    key={a}
+                    className="rounded-full border border-line bg-ink-700 px-4 py-2 text-sm font-semibold text-cloud/80"
+                  >
+                    {a}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-16">
         <Reveal className="container-x mb-10 text-center">
@@ -209,6 +328,33 @@ export default function Home() {
             <p className="mt-3 text-muted">Alles wat je moet weten over online televisie.</p>
           </Reveal>
           <Faq items={faqs} />
+        </div>
+      </section>
+
+      {/* Latest blog */}
+      <section className="py-16">
+        <div className="container-x">
+          <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+                Laatste uit de <span className="text-flag">blog</span>
+              </h2>
+              <p className="mt-2 text-muted">Gidsen, tips en nieuws over IPTV in België en Nederland.</p>
+            </div>
+            <Link
+              href="/blog"
+              className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold text-white transition hover:border-gold hover:text-gold"
+            >
+              Alle artikelen →
+            </Link>
+          </Reveal>
+          <Stagger className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {allPosts.slice(0, 3).map((post) => (
+              <StaggerItem key={post.id}>
+                <PostCard post={post} />
+              </StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </section>
 

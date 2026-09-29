@@ -71,6 +71,52 @@ export const trust = [
   },
 ];
 
+export const films = [
+  "telewizja-iptv-34-e1756162794920", "telewizja-iptv-41-e1756162716481",
+  "telewizja-iptv-16-e1756162826578", "telewizja-iptv-33-e1756162837518",
+  "telewizja-iptv-46-e1756162847742", "telewizja-iptv-38-e1756162857198",
+  "telewizja-iptv-25-e1756162871905", "telewizja-iptv-35-e1756162886118",
+  "telewizja-iptv-21-e1756162896507",
+];
+
+export const sport = [
+  "telewizja-iptv-45-e1756162916524", "telewizja-iptv-13-e1756162925408",
+  "telewizja-iptv-17-e1756162936908", "telewizja-iptv-15-e1756162944782",
+  "telewizja-iptv-44-e1756162955358", "telewizja-iptv-29-e1756162964446",
+  "telewizja-iptv-18-e1756162974327", "telewizja-iptv-11-e1756162984710",
+  "telewizja-iptv-12-e1756162992991", "telewizja-iptv-24-e1756163052405",
+  "telewizja-iptv-39-e1756163043515", "telewizja-iptv-19-e1756163035137",
+  "telewizja-iptv-36-e1756163025522", "telewizja-iptv-37-e1756163017667",
+  "telewizja-iptv-23-e1756163009280", "telewizja-iptv-20-e1756162999536",
+];
+
+export const categories = [
+  { icon: "⚽", title: "Sport", text: "Voetbal, F1, tennis, UFC en meer" },
+  { icon: "🎬", title: "Films & Series", text: "90.000+ titels on demand" },
+  { icon: "🧒", title: "Kids", text: "Tekenfilms en kinderzenders" },
+  { icon: "📰", title: "Nieuws", text: "Belgische & internationale zenders" },
+  { icon: "🎭", title: "Documentaires", text: "Natuur, wetenschap, historie" },
+  { icon: "🌍", title: "Internationaal", text: "Zenders uit heel de wereld" },
+  { icon: "🎵", title: "Muziek", text: "Muziek- en concertzenders" },
+  { icon: "🔞", title: "Volwassen +18", text: "Optioneel beschikbaar" },
+];
+
+export const comparison = [
+  { feature: "Aantal kanalen", iptv: "55.000+", cable: "±100" },
+  { feature: "Films & series on demand", iptv: "90.000+", cable: false },
+  { feature: "4K / Ultra HD", iptv: true, cable: "Beperkt" },
+  { feature: "Kijken op elk apparaat", iptv: true, cable: false },
+  { feature: "Langdurig contract", iptv: false, cable: true },
+  { feature: "Installatie", iptv: "± 15 min", cable: "Afspraak nodig" },
+  { feature: "Prijs per maand", iptv: "vanaf ± €5", cable: "€30–€60" },
+  { feature: "Geld-terug-garantie", iptv: true, cable: false },
+];
+
+export const apps = [
+  "IPTV Smarters Pro", "TiviMate", "Smart IPTV (SIPTV)", "XCIPTV",
+  "IBO Player", "Duplex Play", "Flix IPTV", "Set IPTV",
+];
+
 export const testimonials = [
   "telewizja-iptv-26", "telewizja-iptv-22", "telewizja-iptv-31",
   "telewizja-iptv-32", "telewizja-iptv-42", "telewizja-iptv-30",

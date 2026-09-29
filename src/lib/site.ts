@@ -31,12 +31,15 @@ export type Plan = {
 
 // devices -> plans (from the live pricing tables)
 export const plans: Plan[] = [
+  { devices: 1, months: 1, price: 15, duration: "1 Maand" },
   { devices: 1, months: 3, price: 32, duration: "3 Maanden" },
   { devices: 1, months: 6, price: 42, duration: "6 Maanden" },
   { devices: 1, months: 12, price: 62, duration: "12 Maanden" },
+  { devices: 2, months: 1, price: 27, duration: "1 Maand" },
   { devices: 2, months: 3, price: 47, duration: "3 Maanden" },
   { devices: 2, months: 6, price: 67, duration: "6 Maanden" },
   { devices: 2, months: 12, price: 94, duration: "12 Maanden" },
+  { devices: 3, months: 1, price: 39, duration: "1 Maand" },
   { devices: 3, months: 3, price: 80, duration: "3 Maanden" },
   { devices: 3, months: 6, price: 99, duration: "6 Maanden" },
   { devices: 3, months: 12, price: 150, duration: "12 Maanden" },

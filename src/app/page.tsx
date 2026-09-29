@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* Content showcase */}
-      <section className="py-16">
+      <section className="band py-16">
         <Reveal className="container-x mb-10 text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
             55.000+ kanalen · 90.000+ titels
@@ -77,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section className="py-16">
+      <section className="band py-16">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Comparison */}
-      <section className="py-16">
+      <section className="band py-16">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
@@ -306,7 +306,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16">
+      <section className="band py-16">
         <Reveal className="container-x mb-10 text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
             Getuigenissen
@@ -332,7 +332,7 @@ export default function Home() {
       </section>
 
       {/* Latest blog */}
-      <section className="py-16">
+      <section className="band py-16">
         <div className="container-x">
           <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>

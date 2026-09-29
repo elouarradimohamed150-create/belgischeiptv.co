@@ -69,7 +69,53 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  position: relative;
 }
+
+/* Lit background so the page never reads as a flat black void */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(48% 38% at 12% 6%, rgba(253, 218, 36, 0.10), transparent 60%),
+    radial-gradient(42% 38% at 88% 14%, rgba(239, 51, 64, 0.10), transparent 58%),
+    radial-gradient(55% 45% at 50% 96%, rgba(253, 218, 36, 0.06), transparent 62%);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(circle at 50% 20%, #000, transparent 78%);
+  mask-image: radial-gradient(circle at 50% 20%, #000, transparent 78%);
+}
+
+/* CSS reveal — visible by default, animates in on load, never stays hidden */
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.reveal {
+  animation: reveal-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.stagger > *:nth-child(2) { animation-delay: 0.07s; }
+.stagger > *:nth-child(3) { animation-delay: 0.14s; }
+.stagger > *:nth-child(4) { animation-delay: 0.21s; }
+.stagger > *:nth-child(5) { animation-delay: 0.28s; }
+.stagger > *:nth-child(6) { animation-delay: 0.35s; }
+.stagger > *:nth-child(7) { animation-delay: 0.42s; }
+.stagger > *:nth-child(8) { animation-delay: 0.49s; }
+
+/* Alternating section band for visual rhythm */
+.band { background: linear-gradient(180deg, rgba(22, 22, 28, 0.55), rgba(16, 16, 20, 0.55)); border-block: 1px solid rgba(42, 42, 52, 0.6); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -80,7 +126,7 @@ body {
   }
 }
 
-.container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1.25rem; }
+.container-x { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 1.25rem; }
 
 /* Belgian tri-color hairline */
 .tricolor-bar {

@@ -45,7 +45,7 @@ export default function Hero() {
             transition={{ duration: 0.5, ease }}
             className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-gold"
           >
-            🇧🇪 #1 IPTV in België · 100% uptime
+            🇧🇪 🇳🇱 #1 IPTV in België &amp; Nederland · 100% uptime
           </motion.span>
 
           <motion.h1
@@ -66,7 +66,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.15, ease }}
             className="mt-6 max-w-lg text-lg leading-relaxed text-cloud/85"
           >
-            Toegang tot <strong className="text-gold">55.000+ tv-kanalen</strong> en{" "}
+            In België en Nederland toegang tot{" "}
+            <strong className="text-gold">55.000+ tv-kanalen</strong> en{" "}
             <strong className="text-gold">90.000+ films &amp; series</strong> on demand — in
             HD, FHD &amp; 4K. Geen contract, direct actief.
           </motion.p>

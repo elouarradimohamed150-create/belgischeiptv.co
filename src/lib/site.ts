@@ -2,7 +2,7 @@ export const site = {
   name: "Belgische IPTV",
   domain: "belgischeiptv.be",
   url: "https://belgischeiptv.be",
-  tagline: "Beste IPTV Abonnement in België",
+  tagline: "Beste IPTV Abonnement in België & Nederland",
   description:
     "Belgische IPTV – Geniet van toegang tot meer dan 55.000 tv-kanalen en 90.000 films & series on demand, met een sterke 100% uptime-garantie.",
   whatsappPhone: "212707711512",

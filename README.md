@@ -38,6 +38,20 @@ npm run start    # serve the production build
 node scripts/export-wp.mjs   # refreshes content/*.json and downloads new images
 ```
 
+## SEO & GEO (AI search) checklist — done
+- **Metadata**: per-page titles/descriptions, keywords, canonical, `nl-BE` locale, Open Graph + Twitter cards, theme color.
+- **Structured data (JSON-LD)** on every page: `Organization`, `WebSite` (+ SearchAction), `Product` with all plan `Offers`, `FAQPage`, `Article`, `WebPage`, `CollectionPage`, `BreadcrumbList`.
+- **Dynamic OG image** (`/opengraph-image`) — branded flag-themed preview for social shares.
+- **Sitemap** (`/sitemap.xml`) and **robots** (`/robots.txt`) — robots explicitly allows AI crawlers: GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, CCBot, Meta, and more.
+- **`/llms.txt`** — machine-readable site summary for LLM/AI engines (facts, prices, pages, article index), regenerated at build.
+- **Web manifest** (`/manifest.webmanifest`) for PWA/installability.
+- Visible **breadcrumbs** on posts/pages (matching BreadcrumbList schema).
+- Semantic headings, image alt text, fast static HTML.
+
+### Before go-live (owner action)
+- Add your **Google Search Console** verification token in `src/app/layout.tsx` (`verification.google`, currently commented) and submit the sitemap.
+- Confirm the **legality FAQ** wording suits your business (see `src/lib/home-data.ts`).
+
 ## Notes / TODO for the owner
 - **Ordering is via WhatsApp** (as on the live site) — links in `src/lib/site.ts` (`whatsappPhone`).
   There is no real checkout; add Stripe/Mollie later if you want on-site payment.

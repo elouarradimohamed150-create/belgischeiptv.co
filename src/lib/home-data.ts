@@ -48,7 +48,55 @@ export const steps = [
   },
 ];
 
+export const trust = [
+  {
+    title: "Betrouwbare kwaliteit",
+    text: "Een stabiel en snel IPTV-systeem met 4K- en FHD-kanalen voor een ongeëvenaarde kijkervaring.",
+    icon: "💎",
+  },
+  {
+    title: "Ononderbroken streaming",
+    text: "99,99% serverbeschikbaarheid voor continue toegang tot je favoriete zenders, zonder onderbreking.",
+    icon: "📡",
+  },
+  {
+    title: "Regelmatige updates",
+    text: "Altijd up-to-date content dankzij gratis dagelijkse updates voor TV en VOD.",
+    icon: "🔁",
+  },
+  {
+    title: "Veilige betalingen",
+    text: "100% veilige en betrouwbare betaalopties, zodat je zorgeloos van je IPTV-abonnement geniet.",
+    icon: "🔒",
+  },
+];
+
+export const testimonials = [
+  "telewizja-iptv-26", "telewizja-iptv-22", "telewizja-iptv-31",
+  "telewizja-iptv-32", "telewizja-iptv-42", "telewizja-iptv-30",
+];
+
 export const faqs: QA[] = [
+  {
+    q: "Wat is IPTV?",
+    a: "<p>IPTV (Internet Protocol Television) is televisie die via het internet wordt gestreamd in plaats van via kabel of satelliet. Met een Belgische IPTV-abonnement kijk je op je smart-tv, telefoon, tablet, computer of TV-box naar meer dan 55.000 live kanalen en 90.000+ films en series in HD, FHD en 4K.</p>",
+  },
+  {
+    q: "Is een IPTV-abonnement legaal in België en Nederland?",
+    a: "<p>IPTV als technologie is volledig legaal — het is simpelweg televisie via internet. De legaliteit hangt af van de content-rechten. Wij raden je aan een dienst te kiezen die de geldende regels respecteert. Neem gerust contact met ons op via WhatsApp als je hier vragen over hebt.</p>",
+  },
+  {
+    q: "Wat heb ik nodig om IPTV te gebruiken?",
+    a: "<p>Een compatibel apparaat en een internetverbinding met gemiddelde snelheid.</p><ul><li>TV Box: Android Box, MAG …</li><li>Smart TV: LG, Samsung, TCL … (alle modellen)</li><li>Smartphones en tablets (Android)</li><li>Apple iPhone, iPad en Apple TV (4e gen of nieuwer)</li><li>Chromecast, Fire TV / Fire TV Stick, Roku</li><li>Mac of PC en browser</li></ul>",
+  },
+  {
+    q: "Werkt Belgische IPTV ook in Nederland?",
+    a: "<p>Ja. Onze dienst werkt in heel België én Nederland, en zelfs daarbuiten. Je hebt enkel een internetverbinding nodig. Zowel Belgische en Vlaamse zenders als Nederlandse zenders zijn beschikbaar.</p>",
+  },
+  {
+    q: "Kan ik IPTV gebruiken in steden zoals Brussel, Antwerpen, Gent of Charleroi?",
+    a: "<p>Absoluut. Belgische IPTV werkt overal met een internetverbinding — in Brussel, Antwerpen, Gent, Charleroi, Luik, Brugge en elke andere stad of gemeente in België en Nederland.</p>",
+  },
   {
     q: "Hoe kan ik betalen?",
     a: "<p>Wij accepteren betalingen via PayPal en VISA/MasterCard creditcards. Alles wordt op een uiterst veilige manier afgehandeld door onze dienstverleners.</p>",

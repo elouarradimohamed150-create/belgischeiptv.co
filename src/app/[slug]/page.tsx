@@ -6,6 +6,9 @@ import { allPosts, allPages, getPost, getPage, stripHtml } from "@/lib/content";
 import { site, waLink } from "@/lib/site";
 import Prose from "@/components/Prose";
 import PostCard from "@/components/PostCard";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { graph, articleSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 const RESERVED = new Set(["home", "blog"]);
 
@@ -56,6 +59,16 @@ export default async function DynamicPage({
     // Static WordPress page
     return (
       <div className="container-x max-w-4xl py-16">
+        <JsonLd
+          data={graph([
+            webPageSchema(doc, slug),
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: doc.title, path: `/${slug}` },
+            ]),
+          ])}
+        />
+        <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: doc.title, path: `/${slug}` }]} />
         <h1 className="font-display text-4xl font-black text-white">{doc.title}</h1>
         <div className="mt-8">
           <Prose html={doc.content} />
@@ -88,29 +101,27 @@ export default async function DynamicPage({
   });
   const related = allPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: doc.title,
-    datePublished: doc.date,
-    dateModified: doc.modified,
-    author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name },
-    image: doc.seo.ogImage ? `${site.url}${doc.seo.ogImage}` : undefined,
-    mainEntityOfPage: `${site.url}/${slug}`,
-  };
-
   return (
     <article className="py-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        data={graph([
+          articleSchema(doc, slug),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: doc.title, path: `/${slug}` },
+          ]),
+        ])}
       />
       <div className="container-x max-w-3xl">
-        <Link href="/blog" className="text-sm font-semibold text-gold hover:underline">
-          ← Terug naar blog
-        </Link>
-        <h1 className="mt-4 font-display text-3xl font-black leading-tight text-white sm:text-4xl">
+        <Breadcrumbs
+          items={[
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: doc.title, path: `/${slug}` },
+          ]}
+        />
+        <h1 className="mt-2 font-display text-3xl font-black leading-tight text-white sm:text-4xl">
           {doc.title}
         </h1>
         <div className="mt-4 flex items-center gap-3 text-sm text-muted">

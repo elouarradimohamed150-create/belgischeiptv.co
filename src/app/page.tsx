@@ -5,9 +5,12 @@ import Marquee from "@/components/Marquee";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import CountUp from "@/components/CountUp";
+import Testimonials from "@/components/Testimonials";
 import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
-import { features, steps, faqs } from "@/lib/home-data";
+import JsonLd from "@/components/JsonLd";
+import { features, steps, faqs, trust } from "@/lib/home-data";
 import { waLink } from "@/lib/site";
+import { graph, productSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 const devices = [
   "telewizja-iptv-10", "telewizja-iptv-2", "telewizja-iptv-8", "telewizja-iptv-7",
@@ -24,6 +27,13 @@ const stats = [
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={graph([
+          productSchema(),
+          faqSchema(faqs),
+          breadcrumbSchema([{ name: "Home", path: "/" }]),
+        ])}
+      />
       <Hero />
       <Marquee />
 
@@ -65,6 +75,34 @@ export default function Home() {
                   </div>
                   <h3 className="font-display text-lg font-bold text-white">{f.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{f.text}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* Why buy from us — trust band */}
+      <section className="py-16">
+        <div className="container-x">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+              Waarom een <span className="text-flag">IPTV-abonnement</span> bij ons?
+            </h2>
+            <p className="mt-3 text-muted">
+              Een stabiele dienst met een breed aanbod aan zenders en VOD. Meer dan 3 jaar ervaring
+              en de beste prijzen voor een naadloze kijkervaring in België &amp; Nederland.
+            </p>
+          </Reveal>
+          <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {trust.map((t) => (
+              <StaggerItem key={t.title}>
+                <div className="card-glow h-full rounded-2xl border border-line bg-ink-800 p-7 text-center hover:border-red/40">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-gold/20 to-red/20 text-2xl">
+                    {t.icon}
+                  </div>
+                  <h3 className="font-display text-base font-bold text-white">{t.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{t.text}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -148,12 +186,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-16">
+        <Reveal className="container-x mb-10 text-center">
+          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+            Getuigenissen
+          </span>
+          <h2 className="mt-3 font-display text-3xl font-black text-white sm:text-4xl">
+            Wat onze <span className="text-flag">klanten</span> zeggen
+          </h2>
+        </Reveal>
+        <Testimonials />
+      </section>
+
       {/* FAQ */}
       <section className="py-16">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
-              Veelgestelde <span className="text-flag">vragen</span>
+              Veelgestelde <span className="text-flag">vragen</span> over IPTV
             </h2>
             <p className="mt-3 text-muted">Alles wat je moet weten over online televisie.</p>
           </Reveal>

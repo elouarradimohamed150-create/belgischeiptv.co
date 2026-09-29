@@ -43,6 +43,7 @@ export default function Home() {
         ])}
       />
       <Hero />
+      <Pricing />
       <Marquee />
 
       {/* Stats */}
@@ -160,8 +161,6 @@ export default function Home() {
           </Stagger>
         </div>
       </section>
-
-      <Pricing />
 
       {/* Guarantee */}
       <section className="py-16">

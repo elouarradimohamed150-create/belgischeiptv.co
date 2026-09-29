@@ -58,7 +58,7 @@ export default function Pricing() {
           <AnimatePresence mode="popLayout">
             {shown.map((plan, i) => {
               const featured = plan.months === 12;
-              const msg = `belgischeiptv.be - ${plan.duration} / ${plan.devices} ${
+              const msg = `belgischeiptv.co - ${plan.duration} / ${plan.devices} ${
                 plan.devices === 1 ? "Device" : "Devices"
               } - ${plan.price}€`;
               return (

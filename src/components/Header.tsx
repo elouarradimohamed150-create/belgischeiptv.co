@@ -52,7 +52,7 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <a
-              href={waLink("belgischeiptv.be - Ik wil me inschrijven")}
+              href={waLink("belgischeiptv.co - Ik wil me inschrijven")}
               className="shimmer relative hidden overflow-hidden rounded-full bg-gold px-5 py-2.5 text-sm font-extrabold text-ink transition hover:bg-gold-600 sm:inline-block"
             >
               SCHRIJF JE NU IN!
@@ -91,7 +91,7 @@ export default function Header() {
                 </Link>
               ))}
               <a
-                href={waLink("belgischeiptv.be - Ik wil me inschrijven")}
+                href={waLink("belgischeiptv.co - Ik wil me inschrijven")}
                 className="mt-2 rounded-full bg-gold px-5 py-3 text-center text-sm font-extrabold text-ink"
               >
                 SCHRIJF JE NU IN!

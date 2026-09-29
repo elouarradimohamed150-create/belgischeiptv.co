@@ -12,7 +12,7 @@ function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
             className="relative aspect-[2/3] w-36 shrink-0 overflow-hidden rounded-xl border border-line bg-ink-700 sm:w-44"
           >
             <Image
-              src={`/images/2025/08/${img}.webp`}
+              src={img}
               alt="IPTV content"
               fill
               sizes="176px"

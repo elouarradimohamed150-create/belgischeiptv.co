@@ -71,23 +71,39 @@ export const trust = [
   },
 ];
 
+// Showcase posters. To replace an image, just drop a new file over the
+// matching path in /public/images/showcase/films/ or /sport/ (keep the
+// NN.webp name), or add more entries here. Any web image format works —
+// update the extension in the path if you use .jpg/.png.
 export const films = [
-  "telewizja-iptv-34-e1756162794920", "telewizja-iptv-41-e1756162716481",
-  "telewizja-iptv-16-e1756162826578", "telewizja-iptv-33-e1756162837518",
-  "telewizja-iptv-46-e1756162847742", "telewizja-iptv-38-e1756162857198",
-  "telewizja-iptv-25-e1756162871905", "telewizja-iptv-35-e1756162886118",
-  "telewizja-iptv-21-e1756162896507",
+  "/images/showcase/films/01.webp",
+  "/images/showcase/films/02.webp",
+  "/images/showcase/films/03.webp",
+  "/images/showcase/films/04.webp",
+  "/images/showcase/films/05.webp",
+  "/images/showcase/films/06.webp",
+  "/images/showcase/films/07.webp",
+  "/images/showcase/films/08.webp",
+  "/images/showcase/films/09.webp",
 ];
 
 export const sport = [
-  "telewizja-iptv-45-e1756162916524", "telewizja-iptv-13-e1756162925408",
-  "telewizja-iptv-17-e1756162936908", "telewizja-iptv-15-e1756162944782",
-  "telewizja-iptv-44-e1756162955358", "telewizja-iptv-29-e1756162964446",
-  "telewizja-iptv-18-e1756162974327", "telewizja-iptv-11-e1756162984710",
-  "telewizja-iptv-12-e1756162992991", "telewizja-iptv-24-e1756163052405",
-  "telewizja-iptv-39-e1756163043515", "telewizja-iptv-19-e1756163035137",
-  "telewizja-iptv-36-e1756163025522", "telewizja-iptv-37-e1756163017667",
-  "telewizja-iptv-23-e1756163009280", "telewizja-iptv-20-e1756162999536",
+  "/images/showcase/sport/01.webp",
+  "/images/showcase/sport/02.webp",
+  "/images/showcase/sport/03.webp",
+  "/images/showcase/sport/04.webp",
+  "/images/showcase/sport/05.webp",
+  "/images/showcase/sport/06.webp",
+  "/images/showcase/sport/07.webp",
+  "/images/showcase/sport/08.webp",
+  "/images/showcase/sport/09.webp",
+  "/images/showcase/sport/10.webp",
+  "/images/showcase/sport/11.webp",
+  "/images/showcase/sport/12.webp",
+  "/images/showcase/sport/13.webp",
+  "/images/showcase/sport/14.webp",
+  "/images/showcase/sport/15.webp",
+  "/images/showcase/sport/16.webp",
 ];
 
 export const categories = [

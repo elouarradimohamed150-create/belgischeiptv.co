@@ -10,22 +10,23 @@ export default function PostCard({ post }: { post: Doc }) {
     year: "numeric",
   });
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-800 transition hover:border-green/40">
-      <Link href={`/${post.slug}`} className="relative block aspect-[16/9] overflow-hidden bg-navy-700">
+    <article className="card-glow group flex flex-col overflow-hidden rounded-2xl border border-line bg-ink-800 hover:border-gold/40">
+      <Link href={`/${post.slug}`} className="relative block aspect-[16/9] overflow-hidden bg-ink-700">
         {post.featuredImage && (
           <Image
             src={post.featuredImage}
             alt={post.title}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition duration-300 group-hover:scale-105"
+            className="object-cover transition duration-500 group-hover:scale-110"
           />
         )}
+        <span className="absolute inset-0 bg-gradient-to-t from-ink to-transparent opacity-60" />
       </Link>
       <div className="flex flex-1 flex-col p-6">
-        <time className="text-xs uppercase tracking-wide text-green">{date}</time>
+        <time className="text-xs font-semibold uppercase tracking-wide text-gold">{date}</time>
         <h2 className="mt-2 font-display text-lg font-bold leading-snug text-white">
-          <Link href={`/${post.slug}`} className="transition hover:text-green">
+          <Link href={`/${post.slug}`} className="transition hover:text-gold">
             {post.title}
           </Link>
         </h2>
@@ -34,9 +35,10 @@ export default function PostCard({ post }: { post: Doc }) {
         </p>
         <Link
           href={`/${post.slug}`}
-          className="mt-4 text-sm font-bold text-green transition group-hover:underline"
+          className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-gold"
         >
-          Lees meer →
+          Lees meer
+          <span className="transition-transform group-hover:translate-x-1">→</span>
         </Link>
       </div>
     </article>

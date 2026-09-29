@@ -18,7 +18,8 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 bg-navy-800">
+    <footer className="relative mt-24 border-t border-line bg-ink-800">
+      <div className="tricolor-bar" />
       <div className="container-x grid gap-10 py-14 md:grid-cols-4">
         <div>
           <Image
@@ -35,13 +36,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-4 font-display text-sm font-bold uppercase tracking-wider text-white">
+          <h2 className="mb-4 font-display text-sm font-extrabold uppercase tracking-wider text-gold">
             Snelle links
           </h2>
           <ul className="space-y-2.5 text-sm">
             {quickLinks.map((l) => (
               <li key={l.label}>
-                <Link href={l.href} className="text-muted transition hover:text-green">
+                <Link href={l.href} className="text-muted transition hover:text-cloud">
                   {l.label}
                 </Link>
               </li>
@@ -50,13 +51,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-4 font-display text-sm font-bold uppercase tracking-wider text-white">
+          <h2 className="mb-4 font-display text-sm font-extrabold uppercase tracking-wider text-gold">
             Diensten
           </h2>
           <ul className="space-y-2.5 text-sm">
             {services.map((l, i) => (
               <li key={i}>
-                <Link href={l.href} className="text-muted transition hover:text-green">
+                <Link href={l.href} className="text-muted transition hover:text-cloud">
                   {l.label}
                 </Link>
               </li>
@@ -65,17 +66,17 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-4 font-display text-sm font-bold uppercase tracking-wider text-white">
+          <h2 className="mb-4 font-display text-sm font-extrabold uppercase tracking-wider text-gold">
             Contact
           </h2>
           <ul className="space-y-2.5 text-sm">
             <li>
-              <a href={waLink("Hi! Ik wil meer info.")} className="text-muted transition hover:text-green">
+              <a href={waLink("Hi! Ik wil meer info.")} className="text-muted transition hover:text-cloud">
                 WhatsApp: +{site.whatsappPhone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="text-muted transition hover:text-green">
+              <a href={`mailto:${site.email}`} className="text-muted transition hover:text-cloud">
                 {site.email}
               </a>
             </li>
@@ -83,9 +84,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-5">
+      <div className="border-t border-line py-5">
         <p className="container-x text-center text-xs text-muted">
-          © {new Date().getFullYear()} {site.name}. Alle rechten voorbehouden.
+          © {new Date().getFullYear()} {site.name}. Alle rechten voorbehouden. 🇧🇪
         </p>
       </div>
     </footer>

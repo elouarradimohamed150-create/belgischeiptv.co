@@ -64,13 +64,13 @@ export default async function DynamicPage({
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href={waLink("Hi! Ik heb een vraag over Belgische IPTV.")}
-              className="rounded-full bg-green px-6 py-3 font-bold text-navy transition hover:bg-green-dark"
+              className="rounded-full bg-gold px-6 py-3 font-bold text-ink transition hover:bg-gold-600"
             >
               WhatsApp: +{site.whatsappPhone}
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="rounded-full border border-white/25 px-6 py-3 font-bold text-white transition hover:border-green hover:text-green"
+              className="rounded-full border border-white/25 px-6 py-3 font-bold text-white transition hover:border-gold hover:text-gold"
             >
               {site.email}
             </a>
@@ -107,7 +107,7 @@ export default async function DynamicPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container-x max-w-3xl">
-        <Link href="/blog" className="text-sm font-semibold text-green hover:underline">
+        <Link href="/blog" className="text-sm font-semibold text-gold hover:underline">
           ← Terug naar blog
         </Link>
         <h1 className="mt-4 font-display text-3xl font-black leading-tight text-white sm:text-4xl">
@@ -131,7 +131,7 @@ export default async function DynamicPage({
           <Prose html={doc.content} />
         </div>
 
-        <div className="mt-12 rounded-2xl border border-green/30 bg-navy-800 p-8 text-center">
+        <div className="mt-12 rounded-2xl border border-gold/30 bg-ink-800 p-8 text-center">
           <h2 className="font-display text-2xl font-black text-white">
             Klaar om te starten met Belgische IPTV?
           </h2>
@@ -140,7 +140,7 @@ export default async function DynamicPage({
           </p>
           <Link
             href="/#pricing"
-            className="mt-6 inline-block rounded-full bg-green px-7 py-3.5 font-bold text-navy transition hover:bg-green-dark"
+            className="mt-6 inline-block rounded-full bg-gold px-7 py-3.5 font-bold text-ink transition hover:bg-gold-600"
           >
             Bekijk abonnementen
           </Link>

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
+import CountUp from "@/components/CountUp";
+import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 import { features, steps, faqs } from "@/lib/home-data";
 import { waLink } from "@/lib/site";
 
@@ -10,49 +14,33 @@ const devices = [
   "telewizja-iptv-6", "telewizja-iptv-9", "telewizja-iptv-3", "telewizja-iptv-1",
 ];
 
+const stats = [
+  { to: 55000, suffix: "+", label: "Live TV-kanalen" },
+  { to: 90000, suffix: "+", label: "Films & series" },
+  { to: 99, suffix: "%", label: "Uptime garantie" },
+  { to: 15, suffix: " min", label: "Installatie" },
+];
+
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(168,47,249,0.18),transparent_45%),radial-gradient(circle_at_90%_20%,rgba(67,218,100,0.14),transparent_40%)]" />
-        <div className="container-x relative grid gap-10 py-20 md:grid-cols-2 md:items-center md:py-28">
-          <div>
-            <h1 className="font-display text-4xl font-black leading-tight text-white sm:text-5xl">
-              Belgische IPTV
-              <span className="mt-2 block bg-gradient-to-r from-green to-purple bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
-                Jouw Poort naar Onbeperkt Entertainment
-              </span>
-            </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/85">
-              Geniet van toegang tot meer dan <strong className="text-green">55.000 tv-kanalen</strong> en{" "}
-              <strong className="text-green">90.000 films &amp; series</strong> on demand, met een sterke
-              100% uptime-garantie.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#pricing"
-                className="rounded-full bg-green px-7 py-3.5 font-bold text-navy transition hover:bg-green-dark"
-              >
-                Bestel Belgische IPTV Nu
-              </Link>
-              <a
-                href={waLink("Hi! Ik wil een gratis test van Belgische IPTV.")}
-                className="rounded-full border border-white/25 px-7 py-3.5 font-bold text-white transition hover:border-green hover:text-green"
-              >
-                Gratis proefperiode
-              </a>
-            </div>
-          </div>
-          <div className="relative">
-            <Image
-              src="/images/2025/08/telewizja-iptv-10.webp"
-              alt="Belgische IPTV op meerdere apparaten"
-              width={640}
-              height={420}
-              priority
-              className="w-full rounded-2xl border border-white/10"
-            />
+      <Hero />
+      <Marquee />
+
+      {/* Stats */}
+      <section className="py-16">
+        <div className="container-x">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {stats.map((s, i) => (
+              <Reveal key={s.label} dir="up" delay={i * 0.08}>
+                <div className="rounded-2xl border border-line bg-ink-800 p-6 text-center">
+                  <p className="font-display text-3xl font-black text-flag sm:text-4xl">
+                    <CountUp to={s.to} suffix={s.suffix} />
+                  </p>
+                  <p className="mt-1 text-sm text-muted">{s.label}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -60,28 +48,27 @@ export default function Home() {
       {/* Features */}
       <section className="py-16">
         <div className="container-x">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
-              Kies de Beste IPTV Provider in België 🇧🇪
+              Kies de Beste <span className="text-flag">IPTV Provider</span> in België 🇧🇪
             </h2>
             <p className="mt-3 text-muted">
               Ervaar ongeëvenaarde kwaliteit, betrouwbaarheid en support met Belgische IPTV.
             </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          </Reveal>
+          <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-2xl border border-white/10 bg-navy-800 p-7 transition hover:border-green/40"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green/15 text-2xl">
-                  {f.icon}
+              <StaggerItem key={f.title}>
+                <div className="card-glow h-full rounded-2xl border border-line bg-ink-800 p-7 hover:border-gold/40">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold/20 to-red/20 text-2xl">
+                    {f.icon}
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-white">{f.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{f.text}</p>
                 </div>
-                <h3 className="font-display text-lg font-bold text-white">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{f.text}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -89,72 +76,117 @@ export default function Home() {
 
       {/* Guarantee */}
       <section className="py-16">
-        <div className="container-x rounded-3xl border border-white/10 bg-navy-800 p-10 text-center md:p-14">
-          <h2 className="font-display text-3xl font-black text-white">100% geld-terug-garantie</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted">
-            Probeer de service risicovrij met een 30-dagen geld-terug-garantie en geniet van
-            onbeperkte toegang tot je favoriete entertainment!
-          </p>
-          <Link
-            href="#pricing"
-            className="mt-7 inline-block rounded-full bg-green px-7 py-3.5 font-bold text-navy transition hover:bg-green-dark"
-          >
-            Bestel Belgische IPTV Nu
-          </Link>
-        </div>
+        <Reveal className="container-x">
+          <div className="relative overflow-hidden rounded-3xl border border-line bg-ink-800 p-10 text-center md:p-14">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-red/10 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
+            <span className="relative text-5xl">🛡️</span>
+            <h2 className="relative mt-4 font-display text-3xl font-black text-white">
+              100% geld-terug-garantie
+            </h2>
+            <p className="relative mx-auto mt-4 max-w-2xl text-muted">
+              Probeer de service risicovrij met een 30-dagen geld-terug-garantie en geniet van
+              onbeperkte toegang tot je favoriete entertainment!
+            </p>
+            <Link
+              href="#pricing"
+              className="relative mt-7 inline-block rounded-full bg-gold px-7 py-3.5 font-extrabold text-ink transition hover:bg-gold-600"
+            >
+              Bestel Belgische IPTV Nu
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       {/* How to buy */}
       <section className="py-16">
         <div className="container-x">
-          <h2 className="mb-12 text-center font-display text-3xl font-black text-white sm:text-4xl">
-            Hoe een Belgische IPTV-abonnement te kopen 🇧🇪
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
+          <Reveal className="mb-12 text-center">
+            <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+              Hoe koop je een <span className="text-flag">Belgische IPTV</span> abonnement 🇧🇪
+            </h2>
+          </Reveal>
+          <Stagger className="grid gap-6 md:grid-cols-3">
             {steps.map((s, i) => (
-              <div key={s.title} className="rounded-2xl border border-white/10 bg-navy-800 p-7">
-                <span className="font-display text-5xl font-black text-purple/40">{i + 1}</span>
-                <h3 className="mt-3 font-display text-lg font-bold text-white">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted">{s.text}</p>
-              </div>
+              <StaggerItem key={s.title}>
+                <div className="relative h-full rounded-2xl border border-line bg-ink-800 p-7">
+                  <span className="font-display text-5xl font-black text-gold/25">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 font-display text-lg font-bold text-white">{s.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{s.text}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* Compatible devices */}
       <section className="py-16">
         <div className="container-x">
-          <h2 className="mb-10 text-center font-display text-3xl font-black text-white">
-            Compatibel met alle apparaten!
-          </h2>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+          <Reveal className="mb-10 text-center">
+            <h2 className="font-display text-3xl font-black text-white">
+              Compatibel met <span className="text-flag">alle apparaten</span>
+            </h2>
+          </Reveal>
+          <Stagger className="grid grid-cols-2 gap-6 sm:grid-cols-4" gap={0.06}>
             {devices.map((d) => (
-              <div key={d} className="flex items-center justify-center rounded-xl bg-navy-800 p-6">
-                <Image
-                  src={`/images/2025/08/${d}.webp`}
-                  alt="Compatibel apparaat"
-                  width={120}
-                  height={80}
-                  className="h-16 w-auto object-contain"
-                />
-              </div>
+              <StaggerItem key={d}>
+                <div className="card-glow flex items-center justify-center rounded-xl border border-line bg-ink-800 p-6 hover:border-gold/40">
+                  <Image
+                    src={`/images/2025/08/${d}.webp`}
+                    alt="Compatibel apparaat"
+                    width={120}
+                    height={80}
+                    className="h-16 w-auto object-contain"
+                  />
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="py-16">
         <div className="container-x">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
-              IPTV – Veelgestelde vragen
+              Veelgestelde <span className="text-flag">vragen</span>
             </h2>
             <p className="mt-3 text-muted">Alles wat je moet weten over online televisie.</p>
-          </div>
+          </Reveal>
           <Faq items={faqs} />
         </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16">
+        <Reveal className="container-x">
+          <div className="relative overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-br from-ink-600 via-ink-800 to-ink p-10 text-center md:p-16">
+            <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+              Klaar voor <span className="text-flag">onbeperkt kijken?</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-muted">
+              Sluit je vandaag aan en geniet binnen 15 minuten van 55.000+ kanalen.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link
+                href="#pricing"
+                className="shimmer relative overflow-hidden rounded-full bg-gold px-8 py-4 font-extrabold text-ink transition hover:bg-gold-600"
+              >
+                Bekijk abonnementen
+              </Link>
+              <a
+                href={waLink("Hi! Ik heb een vraag over Belgische IPTV.")}
+                className="rounded-full border border-white/20 px-8 py-4 font-bold text-white transition hover:border-gold hover:text-gold"
+              >
+                Chat op WhatsApp
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </section>
     </>
   );

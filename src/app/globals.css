@@ -1,24 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #011427;
-  --color-navy-800: #011425;
-  --color-navy-700: #04213f;
-  --color-purple: #a82ff9;
-  --color-purple-dark: #8b1fe0;
-  --color-green: #43da64;
-  --color-green-dark: #2fb84e;
-  --color-blue: #046bd2;
-  --color-ink: #1e293b;
-  --color-muted: #94a3b8;
+  /* Belgian flag inspired palette */
+  --color-ink: #0a0a0d;        /* near-black base */
+  --color-ink-800: #101014;
+  --color-ink-700: #16161c;
+  --color-ink-600: #1e1e26;
+  --color-line: #2a2a34;
+
+  --color-gold: #fdda24;       /* flag yellow */
+  --color-gold-600: #e6c211;
+  --color-gold-300: #fee97a;
+
+  --color-red: #ef3340;        /* flag red */
+  --color-red-600: #d51f2c;
+  --color-red-300: #ff6b75;
+
+  --color-cloud: #ecedf2;      /* text */
+  --color-muted: #9a9aa8;
 
   --font-sans: var(--font-lato), system-ui, sans-serif;
   --font-display: var(--font-roboto), system-ui, sans-serif;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-rev: marquee-rev 38s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.6s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-gradient: gradient-pan 12s ease infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-rev {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 :root {
-  --background: #011427;
-  --foreground: #e8eef4;
+  --background: #0a0a0d;
+  --foreground: #ecedf2;
 }
 
 html { scroll-behavior: smooth; }
@@ -28,21 +68,72 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-.container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
-.prose-iptv { line-height: 1.75; color: #d6e0ea; }
-.prose-iptv h1, .prose-iptv h2, .prose-iptv h3, .prose-iptv h4 { color: #fff; font-family: var(--font-display); font-weight: 700; line-height: 1.25; margin: 1.6em 0 0.6em; }
+.container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1.25rem; }
+
+/* Belgian tri-color hairline */
+.tricolor-bar {
+  height: 3px;
+  background: linear-gradient(90deg, #0a0a0d 0 33.3%, var(--color-gold) 33.3% 66.6%, var(--color-red) 66.6% 100%);
+}
+
+/* Gradient text */
+.text-flag {
+  background: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-300) 40%, var(--color-red) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shimmer highlight for CTA */
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  pointer-events: none;
+}
+
+.card-glow {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s;
+}
+.card-glow:hover { transform: translateY(-6px); }
+
+/* Article prose */
+.prose-iptv { line-height: 1.78; color: #cfd0da; }
+.prose-iptv h1, .prose-iptv h2, .prose-iptv h3, .prose-iptv h4 { color: #fff; font-family: var(--font-display); font-weight: 800; line-height: 1.25; margin: 1.6em 0 0.6em; }
 .prose-iptv h1 { font-size: 2rem; } .prose-iptv h2 { font-size: 1.6rem; }
 .prose-iptv h3 { font-size: 1.3rem; } .prose-iptv h4 { font-size: 1.1rem; }
+.prose-iptv h2, .prose-iptv h3 { position: relative; padding-left: 0.85rem; }
+.prose-iptv h2::before, .prose-iptv h3::before {
+  content: ""; position: absolute; left: 0; top: 0.15em; bottom: 0.15em; width: 4px; border-radius: 4px;
+  background: linear-gradient(var(--color-gold), var(--color-red));
+}
 .prose-iptv p { margin: 0 0 1.1em; }
-.prose-iptv a { color: var(--color-green); text-decoration: underline; text-underline-offset: 3px; }
+.prose-iptv a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+.prose-iptv a:hover { color: var(--color-red-300); }
 .prose-iptv ul, .prose-iptv ol { margin: 0 0 1.1em 1.4em; }
-.prose-iptv ul { list-style: disc; } .prose-iptv ol { list-style: decimal; }
-.prose-iptv li { margin: 0.35em 0; }
-.prose-iptv img { border-radius: 12px; margin: 1.5em auto; height: auto; }
-.prose-iptv table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.95rem; }
-.prose-iptv th, .prose-iptv td { border: 1px solid #1e3a5c; padding: 0.6em 0.8em; text-align: left; }
-.prose-iptv th { background: #04213f; color: #fff; }
-.prose-iptv blockquote { border-left: 4px solid var(--color-purple); padding-left: 1rem; color: #b8c6d6; font-style: italic; margin: 1.2em 0; }
+.prose-iptv ul { list-style: none; margin-left: 0; }
+.prose-iptv ul li { position: relative; padding-left: 1.6rem; }
+.prose-iptv ul li::before { content: "▸"; position: absolute; left: 0.2rem; color: var(--color-gold); }
+.prose-iptv ol { list-style: decimal; }
+.prose-iptv li { margin: 0.4em 0; }
+.prose-iptv img { border-radius: 14px; margin: 1.6em auto; height: auto; border: 1px solid var(--color-line); }
+.prose-iptv table { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: 0.95rem; }
+.prose-iptv th, .prose-iptv td { border: 1px solid var(--color-line); padding: 0.65em 0.85em; text-align: left; }
+.prose-iptv th { background: var(--color-ink-600); color: var(--color-gold); }
+.prose-iptv blockquote { border-left: 4px solid var(--color-red); padding-left: 1rem; color: #b8b8c6; font-style: italic; margin: 1.2em 0; }

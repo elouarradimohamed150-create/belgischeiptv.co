@@ -3,6 +3,7 @@ import { Lato, Roboto } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import Header from "@/components/Header";
+import PromoBar from "@/components/PromoBar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import JsonLd from "@/components/JsonLd";
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="nl-BE" className={`${lato.variable} ${roboto.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-ink">
         <JsonLd data={graph([organizationSchema(), websiteSchema()])} />
+        <PromoBar />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

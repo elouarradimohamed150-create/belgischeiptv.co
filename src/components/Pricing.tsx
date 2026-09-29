@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { plans, planFeatures, waLink } from "@/lib/site";
+import PaymentBadges from "@/components/PaymentBadges";
 
 const deviceTabs = [
   { value: 1, label: "1 Apparaat" },
@@ -119,6 +120,8 @@ export default function Pricing() {
             })}
           </AnimatePresence>
         </div>
+
+        <PaymentBadges />
       </div>
     </section>
   );

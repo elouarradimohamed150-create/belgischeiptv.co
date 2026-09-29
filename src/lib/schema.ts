@@ -97,13 +97,13 @@ export function breadcrumbSchema(crumbs: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: c.name,
-      item: `${site.url}${c.path}`,
+      item: c.path === "/" ? `${site.url}/` : `${site.url}${c.path}/`,
     })),
   };
 }
 
 export function articleSchema(doc: Doc, slug: string) {
-  const url = `${site.url}/${slug}`;
+  const url = `${site.url}/${slug}/`;
   return {
     "@type": "Article",
     "@id": `${url}#article`,
@@ -121,7 +121,7 @@ export function articleSchema(doc: Doc, slug: string) {
 }
 
 export function webPageSchema(doc: Doc, slug: string) {
-  const url = `${site.url}/${slug}`;
+  const url = `${site.url}/${slug}/`;
   return {
     "@type": "WebPage",
     "@id": `${url}#webpage`,

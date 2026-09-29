@@ -13,12 +13,12 @@ export function GET() {
     .join("\n");
 
   const postLinks = allPosts
-    .map((p) => `- [${p.title}](${site.url}/${p.slug}): ${stripHtml(p.excerpt || p.content, 120)}`)
+    .map((p) => `- [${p.title}](${site.url}/${p.slug}/): ${stripHtml(p.excerpt || p.content, 120)}`)
     .join("\n");
 
   const pageLinks = allPages
     .filter((p) => !["home", "blog"].includes(p.slug))
-    .map((p) => `- [${p.title}](${site.url}/${p.slug})`)
+    .map((p) => `- [${p.title}](${site.url}/${p.slug}/)`)
     .join("\n");
 
   const body = `# ${site.name}
@@ -41,9 +41,9 @@ ${priceLines}
 
 ## Belangrijke pagina's
 - [Home](${site.url}/)
-- [IPTV-Configuratie / Setup](${site.url}/iptv-setup)
-- [Blog](${site.url}/blog)
-- [Contact](${site.url}/contact-us)
+- [IPTV-Configuratie / Setup](${site.url}/iptv-setup/)
+- [Blog](${site.url}/blog/)
+- [Contact](${site.url}/contact-us/)
 ${pageLinks}
 
 ## Blogartikelen (gidsen & informatie)

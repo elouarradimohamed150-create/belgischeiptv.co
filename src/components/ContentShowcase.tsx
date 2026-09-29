@@ -9,15 +9,16 @@ function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
         {row.map((img, i) => (
           <div
             key={i}
-            className="relative aspect-[2/3] w-36 shrink-0 overflow-hidden rounded-xl border border-line bg-ink-700 sm:w-44"
+            className="group relative aspect-[16/10] w-72 shrink-0 overflow-hidden rounded-xl border border-line bg-ink-700 sm:w-80"
           >
             <Image
               src={img}
               alt="IPTV content"
               fill
-              sizes="176px"
-              className="object-cover"
+              sizes="320px"
+              className="object-cover transition duration-500 group-hover:scale-105"
             />
+            <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
           </div>
         ))}
       </div>

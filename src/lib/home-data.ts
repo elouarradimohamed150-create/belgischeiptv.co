@@ -76,34 +76,19 @@ export const trust = [
 // NN.webp name), or add more entries here. Any web image format works —
 // update the extension in the path if you use .jpg/.png.
 export const films = [
-  "/images/showcase/films/01.webp",
-  "/images/showcase/films/02.webp",
-  "/images/showcase/films/03.webp",
-  "/images/showcase/films/04.webp",
-  "/images/showcase/films/05.webp",
-  "/images/showcase/films/06.webp",
-  "/images/showcase/films/07.webp",
-  "/images/showcase/films/08.webp",
-  "/images/showcase/films/09.webp",
+  "/images/showcase/films/01.jpg",
+  "/images/showcase/films/02.jpg",
+  "/images/showcase/films/03.jpg",
+  "/images/showcase/films/04.jpg",
+  "/images/showcase/films/05.jpg",
 ];
 
 export const sport = [
-  "/images/showcase/sport/01.webp",
-  "/images/showcase/sport/02.webp",
-  "/images/showcase/sport/03.webp",
-  "/images/showcase/sport/04.webp",
-  "/images/showcase/sport/05.webp",
-  "/images/showcase/sport/06.webp",
-  "/images/showcase/sport/07.webp",
-  "/images/showcase/sport/08.webp",
-  "/images/showcase/sport/09.webp",
-  "/images/showcase/sport/10.webp",
-  "/images/showcase/sport/11.webp",
-  "/images/showcase/sport/12.webp",
-  "/images/showcase/sport/13.webp",
-  "/images/showcase/sport/14.webp",
-  "/images/showcase/sport/15.webp",
-  "/images/showcase/sport/16.webp",
+  "/images/showcase/sport/01.jpg",
+  "/images/showcase/sport/02.jpg",
+  "/images/showcase/sport/03.jpg",
+  "/images/showcase/sport/04.jpg",
+  "/images/showcase/sport/05.jpg",
 ];
 
 export const categories = [

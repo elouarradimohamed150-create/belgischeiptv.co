@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Pricing from "@/components/Pricing";
@@ -10,14 +9,20 @@ import ContentShowcase from "@/components/ContentShowcase";
 import PostCard from "@/components/PostCard";
 import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
-import { features, steps, faqs, trust, categories, comparison, apps } from "@/lib/home-data";
+import { features, steps, faqs, trust, categories, comparison } from "@/lib/home-data";
 import { allPosts } from "@/lib/content";
 import { waLink } from "@/lib/site";
 import { graph, productSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 const devices = [
-  "telewizja-iptv-10", "telewizja-iptv-2", "telewizja-iptv-8", "telewizja-iptv-7",
-  "telewizja-iptv-6", "telewizja-iptv-9", "telewizja-iptv-3", "telewizja-iptv-1",
+  { icon: "📺", label: "Smart TV" },
+  { icon: "📱", label: "Smartphone" },
+  { icon: "💻", label: "Laptop & PC" },
+  { icon: "🖥️", label: "Tablet" },
+  { icon: "📦", label: "TV-box" },
+  { icon: "🕹️", label: "Set-top box" },
+  { icon: "🔌", label: "Streaming-stick" },
+  { icon: "🌐", label: "Webbrowser" },
 ];
 
 const stats = [
@@ -266,42 +271,14 @@ export default function Home() {
           </Reveal>
           <Stagger className="grid grid-cols-2 gap-6 sm:grid-cols-4" gap={0.06}>
             {devices.map((d) => (
-              <StaggerItem key={d}>
-                <div className="card-glow flex items-center justify-center rounded-xl border border-line bg-ink-800 p-6 hover:border-gold/40">
-                  <Image
-                    src={`/images/2025/08/${d}.webp`}
-                    alt="Compatibel apparaat"
-                    width={120}
-                    height={80}
-                    className="h-16 w-auto object-contain"
-                  />
+              <StaggerItem key={d.label}>
+                <div className="card-glow flex flex-col items-center justify-center gap-3 rounded-xl border border-line bg-ink-800 p-6 hover:border-gold/40">
+                  <span className="text-4xl">{d.icon}</span>
+                  <span className="text-sm font-semibold text-cloud/85">{d.label}</span>
                 </div>
               </StaggerItem>
             ))}
           </Stagger>
-        </div>
-      </section>
-
-      {/* Supported apps */}
-      <section className="py-10">
-        <div className="container-x">
-          <Reveal>
-            <div className="rounded-2xl border border-line bg-ink-800 p-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
-                Werkt met al je favoriete apps
-              </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-3">
-                {apps.map((a) => (
-                  <span
-                    key={a}
-                    className="rounded-full border border-line bg-ink-700 px-4 py-2 text-sm font-semibold text-cloud/80"
-                  >
-                    {a}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 

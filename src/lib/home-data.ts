@@ -91,7 +91,7 @@ export const sport = [
 ];
 
 export const categories = [
-  { icon: "⚽", title: "Sport", text: "Voetbal, F1, tennis, UFC en meer" },
+  { icon: "⚽", title: "Sport", text: "Voetbal, tennis, autosport en meer" },
   { icon: "🎬", title: "Films & Series", text: "90.000+ titels on demand" },
   { icon: "🧒", title: "Kids", text: "Tekenfilms en kinderzenders" },
   { icon: "📰", title: "Nieuws", text: "Belgische & internationale zenders" },
@@ -112,14 +112,21 @@ export const comparison = [
   { feature: "Geld-terug-garantie", iptv: true, cable: false },
 ];
 
+// Generic device categories — no third-party trademarks.
 export const apps = [
-  "IPTV Smarters Pro", "TiviMate", "Smart IPTV (SIPTV)", "XCIPTV",
-  "IBO Player", "Duplex Play", "Flix IPTV", "Set IPTV",
+  "Smart TV", "Smartphones", "Tablets", "Mediaspelers",
+  "TV-box & set-top box", "Streaming-sticks", "Laptop & PC", "Webbrowser",
 ];
 
+// PLACEHOLDER testimonials — replace `quote` and `name` with REAL customer
+// feedback before go-live. Do not present invented reviews as genuine.
 export const testimonials = [
-  "telewizja-iptv-26", "telewizja-iptv-22", "telewizja-iptv-31",
-  "telewizja-iptv-32", "telewizja-iptv-42", "telewizja-iptv-30",
+  { name: "Thomas D.", location: "Antwerpen", quote: "Alles werkt vlot en zonder buffering, zelfs live sport in 4K. Installatie was in enkele minuten geregeld." },
+  { name: "Sophie V.", location: "Gent", quote: "Enorm veel zenders en films. De klantenservice via WhatsApp reageert supersnel op elke vraag." },
+  { name: "Kevin M.", location: "Brussel", quote: "Al maanden geen enkel probleem. Beeldkwaliteit is top en de prijs is eerlijk. Zeker een aanrader." },
+  { name: "Laura P.", location: "Brugge", quote: "Makkelijk te installeren op mijn smart-tv en telefoon. Ik kijk nu overal mijn favoriete programma's." },
+  { name: "Nick B.", location: "Rotterdam", quote: "Overgestapt van kabel en geen spijt. Meer keuze, betere kwaliteit en geen jaarcontract." },
+  { name: "Fatima E.", location: "Charleroi", quote: "Perfecte service, snelle activatie en de geld-terug-garantie gaf me vertrouwen om te starten." },
 ];
 
 export const faqs: QA[] = [
@@ -133,7 +140,7 @@ export const faqs: QA[] = [
   },
   {
     q: "Wat heb ik nodig om IPTV te gebruiken?",
-    a: "<p>Een compatibel apparaat en een internetverbinding met gemiddelde snelheid.</p><ul><li>TV Box: Android Box, MAG …</li><li>Smart TV: LG, Samsung, TCL … (alle modellen)</li><li>Smartphones en tablets (Android)</li><li>Apple iPhone, iPad en Apple TV (4e gen of nieuwer)</li><li>Chromecast, Fire TV / Fire TV Stick, Roku</li><li>Mac of PC en browser</li></ul>",
+    a: "<p>Een compatibel apparaat en een internetverbinding met gemiddelde snelheid. De dienst werkt op vrijwel elk toestel:</p><ul><li>Smart TV's (alle grote merken en modellen)</li><li>Smartphones en tablets</li><li>TV-boxen en set-top boxen</li><li>Streaming-sticks en mediaspelers</li><li>Laptop, computer of webbrowser</li></ul>",
   },
   {
     q: "Werkt Belgische IPTV ook in Nederland?",
@@ -148,12 +155,8 @@ export const faqs: QA[] = [
     a: "<p>Wij accepteren betalingen via PayPal en VISA/MasterCard creditcards. Alles wordt op een uiterst veilige manier afgehandeld door onze dienstverleners.</p>",
   },
   {
-    q: "Wat heb je nodig om Belgische IPTV te gebruiken?",
-    a: "<p>Een compatibel apparaat en een internetverbinding met gemiddelde snelheid.</p><ul><li>TV Box: Android Box, MAG …</li><li>Smart TV: LG, Samsung, TCL … (alle modellen)</li><li>Smartphones en tablets (Android)</li><li>Apple iPhone, iPad en Apple TV (4e gen of nieuwer)</li><li>Chromecast, Fire TV / Fire TV Stick, Roku</li><li>Mac of PC en browser</li></ul>",
-  },
-  {
     q: "Kan ik lokale sportevenementen bekijken?",
-    a: "<p>Ja. Abonnees kunnen lokale voetbalwedstrijden en sport bekijken op kanalen zoals Amazon Prime, Sky Sports, BT Sport, beIN Sport, ESPN, NBC, CBS, FOX en meer. Lokale en nationale zenders zijn beschikbaar voor live kijken in jouw regio.</p>",
+    a: "<p>Ja. Abonnees kunnen lokale voetbalwedstrijden en sport volgen op een breed aanbod aan nationale en internationale sportkanalen. Lokale en nationale zenders zijn beschikbaar voor live kijken in jouw regio.</p>",
   },
   {
     q: "Waarin verschilt Belgische IPTV van kabeltelevisie?",

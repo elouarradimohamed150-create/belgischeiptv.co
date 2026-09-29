@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "IPTV Vlaanderen",
     "beste IPTV provider",
     "4K IPTV",
-    "IPTV Smarters",
+    "IPTV player",
     "voetbal streaming België",
     "TV kanalen online",
   ],

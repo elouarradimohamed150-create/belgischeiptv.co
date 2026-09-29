@@ -1,26 +1,37 @@
-import Image from "next/image";
 import { testimonials } from "@/lib/home-data";
 
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 export default function Testimonials() {
-  const row = [...testimonials, ...testimonials];
   return (
-    <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
-      <div className="flex w-max animate-marquee gap-5">
-        {row.map((img, i) => (
-          <figure
-            key={i}
-            className="w-72 shrink-0 overflow-hidden rounded-2xl border border-line bg-ink-800"
-          >
-            <Image
-              src={`/images/2025/08/${img}.webp`}
-              alt="Klantbeoordeling Belgische IPTV"
-              width={288}
-              height={200}
-              className="h-auto w-full object-cover"
-            />
-          </figure>
-        ))}
-      </div>
+    <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {testimonials.map((t) => (
+        <figure
+          key={t.name}
+          className="card-glow flex flex-col rounded-2xl border border-line bg-ink-800 p-7 hover:border-gold/40"
+        >
+          <div className="mb-3 text-gold" aria-label="5 van 5 sterren">
+            ★★★★★
+          </div>
+          <blockquote className="flex-1 text-cloud/90">“{t.quote}”</blockquote>
+          <figcaption className="mt-5 flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-gold/25 to-red/25 font-display text-sm font-black text-white">
+              {initials(t.name)}
+            </span>
+            <span>
+              <span className="block font-semibold text-white">{t.name}</span>
+              <span className="block text-xs text-muted">{t.location}</span>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
